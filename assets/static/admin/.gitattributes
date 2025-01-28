@@ -1,0 +1,8 @@
+# Auto detect text files and perform LF normalization
+* text=auto
+*.js text
+*.css text
+*.html text
+*.json text
+*.md text
+*.svg binary

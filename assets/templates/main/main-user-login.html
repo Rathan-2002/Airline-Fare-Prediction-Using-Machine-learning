@@ -1,0 +1,346 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <title>Adventure - Free Bootstrap 4 Template by Colorlib</title>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    
+    <link href="https://fonts.googleapis.com/css?family=Poppins:200,300,400,500,600,700" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css?family=Abril+Fatface" rel="stylesheet">
+
+    <link rel="stylesheet" href="{% static 'main/css/open-iconic-bootstrap.min.css' %}">
+    <link rel="stylesheet" href="{% static 'main/css/animate.css' %}">
+    
+    <link rel="stylesheet" href="{% static 'main/css/owl.carousel.min.css' %}">
+    <link rel="stylesheet" href="{% static 'main/css/owl.theme.default.min.css' %}">
+    <link rel="stylesheet" href="{% static 'main/css/magnific-popup.css' %}">
+
+    <link rel="stylesheet" href="{% static 'main/css/aos.css' %}">
+
+    <link rel="stylesheet" href="{% static 'main/css/ionicons.min.css' %}">
+
+    <link rel="stylesheet" href="{% static 'main/css/bootstrap-datepicker.css' %}">
+    <link rel="stylesheet" href="{% static 'main/css/jquery.timepicker.css' %}">
+
+    
+    <link rel="stylesheet" href="{% static 'main/css/flaticon.css' %}">
+    <link rel="stylesheet" href="{% static 'main/css/icomoon.css' %}">
+    <link rel="stylesheet" href="{% static 'main/css/style.css' %}">
+    <script src="https://unpkg.com/sweetalert/dist/sweetalert.min.js"></script>
+
+  </head>
+  <body>
+    
+	  <nav class="navbar navbar-expand-lg navbar-dark ftco_navbar bg-dark ftco-navbar-light" id="ftco-navbar">
+	    <div class="container">
+        <a class="navbar-brand" href="{% url 'main_index' %}">Fly-High</a>
+	      <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#ftco-nav" aria-controls="ftco-nav" aria-expanded="false" aria-label="Toggle navigation">
+	        <span class="oi oi-menu"></span> Menu
+	      </button>
+
+	      <div class="collapse navbar-collapse" id="ftco-nav">
+	        <ul class="navbar-nav ml-auto">
+                <ul class="navbar-nav ml-auto">
+                  <li class="nav-item "><a href="{% url 'main_index' %}" class="nav-link">Home</a></li>
+                  <li class="nav-item"><a href="{% url 'main_about' %}" class="nav-link">About</a></li>
+                  <li class="nav-item"><a href="{% url 'main_admin_login' %}" class="nav-link">Admin</a></li>
+                  <li class="nav-item active"><a href="{% url 'main_user_login' %}" class="nav-link">User</a></li>
+                  <!-- <li class="nav-item"><a href="blog.html" class="nav-link">Blog</a></li> -->
+                  <li class="nav-item"><a href="{% url 'main_contact' %}" class="nav-link">Contact</a></li>
+                  </ul>
+	        </ul>
+	      </div>
+	    </div>
+	  </nav>
+    <!-- END nav -->
+    
+    <div class="hero-wrap js-fullheight" style="background-image: url('/static/main/images/bg_1.jpg');">
+      <div class="overlay"></div>
+      <div class="container">
+        <div class="row no-gutters slider-text js-fullheight align-items-center justify-content-center" data-scrollax-parent="true">
+          <div class="col-md-9 text-center ftco-animate" data-scrollax=" properties: { translateY: '70%' }">
+            <!-- <p class="breadcrumbs" data-scrollax="properties: { translateY: '30%', opacity: 1.6 }"><span class="mr-2"><a href="index.html">Home</a></span> <span>Blog</span></p>
+            <h2 class="mb-3 bread" data-scrollax="properties: { translateY: '30%', opacity: 1.6 }">Admin-Login</h2> -->
+            <main>
+                <div class="container">
+                  <div class="row d-flex justify-content-center py-vh-5 pb-0">
+                    <div class="col-12 col-lg-10 col-xl-8">
+                        <div class="post-area pd-top-75 pd-bottom-50 " id="trending" >
+                            <center>
+                         <h4 class="mt-5 mb-5 text-white">User Login</h4>
+                        <form class="contact-form" method="post" enctype="multipart/form-data" onsubmit='return loginvalidation();' name='myform'>
+
+                          {% csrf_token %}
+                                <div class="col-8">
+                                <div class="mb-3">
+                                  <label for="exampleInputEmail1" class="form-label text-white">User</label>
+                                  <input type="email" name='email' class="form-control mb-4 form-control-lg bg-gray-800 border-dark" aria-describedby="emailHelp">
+                                </div>
+                                <div class="mb-3">
+                                  <label for="exampleInputPassword1" class="form-label text-white">Password</label>
+                                  <input type="password" name='password' class="form-control form-control-lg bg-gray-800 text-dark border-dark" id="exampleInputPassword1">
+                                </div>
+                                <div>
+                                <p class="mb-5 pb-lg-2 text-white" style="color: #393f81;">Don't have an account? <a href="{% url 'main_user_registration' %}"
+                                    style="color: #c8cad8;">Register here</a></p>
+                                    <button type="submit" class="btn btn-white btn-xl mb-4 text-dark">Submit</button>
+            
+                                </div>
+                            </form>
+            
+                        </center>
+                        </div>
+                </div>
+            
+              </main>
+          </div>
+        </div>
+      </div>
+    </div>
+    {% if messages %}
+    {% for message in messages %}
+    {% if message.level == DEFAULT_MESSAGE_LEVELS.SUCCESS %}
+    <script>swal({
+            title: "Admin Login Successfully!",
+            text: "{{message}}",
+            icon: "success",
+            button: "OK",
+        });
+    </script>
+    
+    
+    {% elif message.level == DEFAULT_MESSAGE_LEVELS.WARNING %}
+    <script>swal({
+            title: "Warning :)",
+            text: "{{message}}",
+            icon: "warning",
+            button: "OK",
+        });
+    </script>
+    {% elif message.level == DEFAULT_MESSAGE_LEVELS.INFO %}
+    <script>swal({
+            title: "error :)",
+            text: "{{message}}",
+            icon: "error",
+            button: "OK",
+        });
+    </script>
+    {% elif message.level == DEFAULT_MESSAGE_LEVELS.DANGER %}
+    <script>swal({
+            title: "error :)",
+            text: "{{message}}",
+            icon: "error",
+            button: "OK",
+        });
+    </script>
+    {% endif %}
+    {% endfor %}
+    {% endif %}
+        <script type="text/javascript">
+          function loginvalidation() {
+            var Email = document.myform.email
+            var Passw = /^(?=.[0-9])(?=.[!@#$%^&])[a-zA-Z0-9!@#$%^&]{5,16}$/;
+            var mailformat = /^\w+([\.-]?\w+)@\w+([\.-]?\w+)(\.\w{2,3})+$/;
+            var Password = document.myform.password
+            var Name = document.myform.fullname
+            var Contact = document.myform.contact
+            var AadharPhoto = document.myform.aadharphoto
+            var GSTPhoto = document.myform.gstphoto
+            // var StudentID = document.myform.studentID
+            // var Branch = document.myform.branch
+            // var Year = document.myform.year
+            // var Mobilenumber = document.myform.user_mobile
+            // var Typeuser = document.myform.user_birth
+            var Photo = document.myform.photo
+      
+            
+      
+            if (Name.value == "") {
+                alert("Please Enter Your Full Name:");
+              Name.focus();
+              return false;
+            }
+            if (Contact.value == "") {
+                alert("Please Enter Your Contact Number:");
+                Contact.focus();
+                return false;
+            }
+            // if (StudentID.value == "") {
+            // 	alert("Please Enter Your StudentID Number:");
+            // 	StudentID.focus();
+            // 	return false;
+            // }
+            // if (Branch.value == "") {
+            // 	alert("Please Enter Your Branch:");
+            // 	Branch.focus();
+            // 	return false;
+            // }
+            // if (Year.value == "") {
+            // 	alert("Please Choose your Year of Study:");
+            // 	Year.focus();
+            // 	return false;
+            // }
+            // if (Mobilenumber.value.length != 10) {
+      
+            //     alert("please Enter valid mobile number");
+      
+            //     return false;
+      
+            // }
+      
+            // if (Mobilenumber.value.length <= 0) {
+      
+            //     alert("Please Enter Mobile Number");
+      
+            //     return false;
+            // }
+             
+            if (Email.value == "") {
+              alert("Please Enter Your Email Address");
+              Email.focus();
+              return false;
+            }
+      
+            if (!Email.value.match(mailformat)) {
+              alert("Invalid Email format");
+              Email.focus();
+              return false;
+            }
+            // if (Typeuser.value == ""){
+      
+            //     alert("Please Select DOB: ");
+            //     Typeuser.focus();
+      
+            //     return false;
+            // }
+            if (Password.value.length <= 0) {
+              alert("Please Enter Your Password")
+              Password.focus();
+              return false;
+            }
+            // if (!Password.value.match(passw)) {
+            //     alert("password should must be special Characters and Numbers")
+            //     Password.focus();
+            //     return false;
+            // }
+            if (Password.value.length < 6) {
+              alert("password should not be less then six Characters")
+              Password.focus();
+              return false;
+            }
+            
+            if (AadharPhoto.value == "") {
+              alert("Please Upload Aadhar Image:");
+              AadharPhoto.focus();
+              return false;
+            }   
+            if (GSTPhoto.value == "") {
+              alert("Please Upload GST Invoice Bill Image:");
+              GSTPhoto.focus();
+              return false;
+            }
+            if (Photo.value == "") {
+              alert("Please Upload Profile Image:");
+              Photo.focus();
+              return false;
+            }      
+          }
+      
+    </script>
+
+   
+		
+
+    <footer class="ftco-footer ftco-bg-dark ftco-section">
+      <div class="container">
+        <div class="row mb-5">
+          <div class="col-md">
+            <div class="ftco-footer-widget mb-4">
+              <h2 class="ftco-heading-2">Adventure</h2>
+              <p>Far far away, behind the word mountains, far from the countries Vokalia and Consonantia, there live the blind texts.</p>
+              <ul class="ftco-footer-social list-unstyled float-md-left float-lft mt-3">
+                <li class="ftco-animate"><a href="#"><span class="icon-twitter"></span></a></li>
+                <li class="ftco-animate"><a href="#"><span class="icon-facebook"></span></a></li>
+                <li class="ftco-animate"><a href="#"><span class="icon-instagram"></span></a></li>
+              </ul>
+            </div>
+          </div>
+          <div class="col-md">
+            <div class="ftco-footer-widget mb-4 ml-md-4">
+              <h2 class="ftco-heading-2">Information</h2>
+              <ul class="list-unstyled">
+                <li><a href="#" class="py-2 d-block">About Us</a></li>
+                <li><a href="#" class="py-2 d-block">Online enquiry</a></li>
+                <li><a href="#" class="py-2 d-block">Call Us</a></li>
+                <li><a href="#" class="py-2 d-block">General enquiries</a></li>
+                <li><a href="#" class="py-2 d-block">Booking Conditions</a></li>
+                <li><a href="#" class="py-2 d-block">Privacy and Policy</a></li>
+                <li><a href="#" class="py-2 d-block">Refund policy</a></li>
+              </ul>
+            </div>
+          </div>
+          <div class="col-md">
+             <div class="ftco-footer-widget mb-4">
+              <h2 class="ftco-heading-2">Experience</h2>
+              <ul class="list-unstyled">
+                <li><a href="#" class="py-2 d-block">Beach</a></li>
+                <li><a href="#" class="py-2 d-block">Adventure</a></li>
+                <li><a href="#" class="py-2 d-block">Wildlife</a></li>
+                <li><a href="#" class="py-2 d-block">Honeymoon</a></li>
+                <li><a href="#" class="py-2 d-block">Nature</a></li>
+                <li><a href="#" class="py-2 d-block">Party</a></li>
+              </ul>
+            </div>
+          </div>
+          <div class="col-md">
+            <div class="ftco-footer-widget mb-4">
+            	<h2 class="ftco-heading-2">Have a Questions?</h2>
+            	<div class="block-23 mb-3">
+	              <ul>
+	                <li><span class="icon icon-map-marker"></span><span class="text">203 Fake St. Mountain View, San Francisco, California, USA</span></li>
+	                <li><a href="#"><span class="icon icon-phone"></span><span class="text">+2 392 3929 210</span></a></li>
+	                <li><a href="#"><span class="icon icon-envelope"></span><span class="text">info@yourdomain.com</span></a></li>
+	              </ul>
+	            </div>
+            </div>
+          </div>
+        </div>
+        <div class="row">
+          <div class="col-md-12 text-center">
+
+            <p><!-- Link back to Colorlib can't be removed. Template is licensed under CC BY 3.0. -->
+              Copyright &copy;<script>document.write(new Date().getFullYear());</script> All rights reserved | This template is Designed & Developed <i aria-hidden="true"></i> by <a href="https://codebook.in" target="_blank">Codebook</a>
+  <!-- Link back to Colorlib can't be removed. Template is licensed under CC BY 3.0. --></p>
+          </div>
+        </div>
+      </div>
+    </footer>
+    
+  
+
+  <!-- loader -->
+  <div id="ftco-loader" class="show fullscreen"><svg class="circular" width="48px" height="48px"><circle class="path-bg" cx="24" cy="24" r="22" fill="none" stroke-width="4" stroke="#eeeeee"/><circle class="path" cx="24" cy="24" r="22" fill="none" stroke-width="4" stroke-miterlimit="10" stroke="#F96D00"/></svg></div>
+
+
+  
+  <script src="{% static 'main/js/jquery.min.js' %}"></script>
+  <script src="{% static 'main/js/jquery-migrate-3.0.1.min.js' %}"></script>
+  <script src="{% static 'main/js/popper.min.js' %}"></script>
+  <script src="{% static 'main/js/bootstrap.min.js' %}"></script>
+  <script src="{% static 'main/js/jquery.easing.1.3.js' %}"></script>
+  <script src="{% static 'main/js/jquery.waypoints.min.js' %}"></script>
+  <script src="{% static 'main/js/jquery.stellar.min.j' %}s"></script>
+  <script src="{% static 'main/js/owl.carousel.min.js' %}"></script>
+  <script src="{% static 'main/js/jquery.magnific-popup.min.js' %}"></script>
+  <script src="{% static 'main/js/aos.js' %}"></script>
+  <script src="{% static 'main/js/jquery.animateNumber.min.js' %}"></script>
+  <script src="{% static 'main/js/bootstrap-datepicker.js' %}"></script>
+  <script src="{% static 'main/js/jquery.timepicker.min.js' %}"></script>
+  <script src="{% static 'main/js/scrollax.min.js' %}"></script>
+  <script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyBVWaKrjvy3MaE7SQ74_uJiULgl1JY0H2s&sensor=false"></script>
+  <script src="{% static 'main/js/google-map.js' %}"></script>
+  <script src="{% static 'main/js/main.js' %}"></script>
+    
+  </body>
+</html>

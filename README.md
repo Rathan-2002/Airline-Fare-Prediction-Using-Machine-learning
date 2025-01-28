@@ -41,7 +41,29 @@ The project demonstrates how machine learning can help predict flight prices, ma
 
    You can access the system in your browser at `http://127.0.0.1:8000/`.
 
-## Technology Stack and Models Used
+### Requirements
+
+[requirements file](requirements.txt)
+
+- `asgiref==3.6.0`
+- `Django==4.1.5`
+- `joblib==1.2.0`
+- `mysql==0.0.3`
+- `mysqlclient==2.1.1`
+- `numpy==1.24.1`
+- `pandas==1.5.3`
+- `Pillow==9.4.0`
+- `python-dateutil==2.8.2`
+- `pytz==2022.7.1`
+- `scikit-learn==1.2.0`
+- `scipy==1.10.0`
+- `six==1.16.0`
+- `sklearn==0.0.post1`
+- `sqlparse==0.4.3`
+- `threadpoolctl==3.1.0`
+- `tzdata==2022.7`
+
+### Technology Stack and Models Used
 
 - **Programming Language**: Python 3.10  
 - **Web Framework**: Django  

@@ -15,8 +15,8 @@ The project demonstrates how machine learning can help predict flight prices, ma
 1. **Clone the repository**:
 
    ```bash
-   git clone https://github.com/yourusername/airline-fare-prediction.git
-   cd airline-fare-prediction
+   git clone https://github.com/yourusername/Airline-Fare-Prediction-Using-Machine-learning.git
+   cd Airline-Fare-Prediction-Using-Machine-learning
    ```
 
 2. **Set up a Python virtual environment**:
@@ -42,8 +42,6 @@ The project demonstrates how machine learning can help predict flight prices, ma
    You can access the system in your browser at `http://127.0.0.1:8000/`.
 
 ### Requirements
-
-[requirements file](requirements.txt)
 
 - `asgiref==3.6.0`
 - `Django==4.1.5`
